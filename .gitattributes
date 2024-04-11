@@ -1,0 +1,8 @@
+* text=auto
+*.css linguist-vendored
+*.less linguist-vendored
+/lib/capistrano              export-ignore
+/config/deploy           export-ignore
+/config/deploy.rb           export-ignore
+Capfile           export-ignore
+.gitattributes    export-ignore

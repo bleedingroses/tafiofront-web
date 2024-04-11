@@ -1,0 +1,11 @@
+Created View: C:\wamp\www\laravelapp\resources/views/auth/login.blade.php
+Created View: C:\wamp\www\laravelapp\resources/views/auth/register.blade.php
+Created View: C:\wamp\www\laravelapp\resources/views/auth/passwords/email.blade.php
+Created View: C:\wamp\www\laravelapp\resources/views/auth/passwords/reset.blade.php
+Created View: C:\wamp\www\laravelapp\resources/views/auth/emails/password.blade.php
+Created View: C:\wamp\www\laravelapp\resources/views/layouts/app.blade.php
+Created View: C:\wamp\www\laravelapp\resources/views/home.blade.php
+Created View: C:\wamp\www\laravelapp\resources/views/welcome.blade.php
+Installed HomeController.
+Updated Routes File.
+Authentication scaffolding generated successfully!

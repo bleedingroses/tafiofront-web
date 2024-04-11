@@ -1,0 +1,39 @@
+<?php
+
+namespace Tests\Browser;
+use Tafio\Models\User;
+use Tests\DuskTestCase;
+use Laravel\Dusk\Browser;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+
+class LoginTest extends DuskTestCase
+{
+    /**
+     * A Dusk test example.
+     *
+     * @return void
+     */
+    // public function testExample()
+    // {
+    //     $this->browse(function (Browser $browser) {
+    //         $browser->visit('/')
+    //                 ->assertSee('Laravel');
+    //     });
+    // }
+
+    public function testLogin(){
+            // User::where('name','haidar')->delete();
+            // User::create(['name' => 'haidar','email' => 'haidarafifmaulana@gmail.com','password' => bcrypt('rahasia')]    );
+          $this->browse(function (Browser $browser) {
+
+              $browser->visit('/login')
+                   // ->clickLink('Login')
+                   // ->assertSee('email')
+                   ->type('email','teguh@tafio.com')
+                   ->type('password','a')
+                    ->press('Log In')
+                   ->assertPathIs('/home');
+            });
+        }
+
+}
