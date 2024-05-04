@@ -27,6 +27,21 @@ $this->shortCompany=str_replace('.', '', $domain);
 $this->folder='company.'.$this->shortCompany.'.';
 
 $this->kirim['folder']=$this->folder;
+$this->kirim['company']=$this->company;
+
+
+
+
+$hasil=[];
+foreach($this->company->config as $xx)
+{
+$hasil[$xx->nama]=$xx->isi;
+}
+$this->kirim['config']=(object)$hasil;
+
+
+
+
 
 }
     

@@ -24,6 +24,10 @@ protected $table ='core_companies';
       return $this->hasMany(menu::class)
         ;
     }
+     public function config(){
+      return $this->hasMany(config::class)
+        ;
+    }
 
 	public function modulesetting(){
 		return $this->belongsToMany(modulesetting::class,'core_company_settings')->withPivot('isi');

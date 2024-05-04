@@ -19,6 +19,7 @@
                 ini custom profil
 {!!$content->isi??''!!}
 
+{{$config->profil}}
 
                 </div>
             </div>
