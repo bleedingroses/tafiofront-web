@@ -15,7 +15,7 @@ $companies=company::get();
 
 foreach($companies as $company)
 {
-Route::domain($company->name)->group( 
+Route::domain($company->domain)->group( 
 function() use($company)  {
 
 

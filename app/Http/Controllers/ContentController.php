@@ -7,7 +7,7 @@ use View;
 class ContentController extends Controller
 {
 
-public $defaultView,$shortCompany,$company,$folder,$menu,$kirim,
+public $defaultView,$company,$folder,$menu,$kirim,
 $customView;
 
 
@@ -19,12 +19,11 @@ public function __construct() {
 
 
 $domain=request()->getHost();
-$this->company=company::where('name',$domain)->first();
-
-$this->shortCompany=str_replace('.', '', $domain);
+$this->company=company::where('domain',$domain)->first();
 
 
-$this->folder='company.'.$this->shortCompany.'.';
+
+$this->folder='company.'.$this->company->name.'.';
 
 $this->kirim['folder']=$this->folder;
 $this->kirim['company']=$this->company;
