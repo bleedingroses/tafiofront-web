@@ -93,7 +93,6 @@ $this->customView= $this->folder.'customPages.'.$customPage;
 
     public function index()
     {
-$this->kirim['content']=$this->company;
 return view($this->folder.'defaultPages.home',$this->kirim);
     }
     

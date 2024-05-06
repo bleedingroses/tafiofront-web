@@ -15,7 +15,8 @@
                 </div>
                 <div style="padding: 10px" class="col-lg-6 text-ket">
                    
-{!!$content->bb??''!!}
+{!!$content->isi??''!!}
+{!!$config->wa??''!!}
 
 
                 </div>
