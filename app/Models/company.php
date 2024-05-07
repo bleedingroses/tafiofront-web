@@ -20,5 +20,12 @@ protected $table ='core_companies';
         ;
     }
 
+     public function ambilMenu($menu){
+
+      $hasil=$this->menu()->where('nama',$menu)->first();
+return $hasil;
+    }
+
+
 
 }
