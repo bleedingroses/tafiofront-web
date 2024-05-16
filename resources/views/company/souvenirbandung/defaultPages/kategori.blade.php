@@ -1,4 +1,4 @@
-@extends($folder.'layouts.main')
+@extends($folder . 'layouts.main')
 
 @section('main')
     <section id="header">
@@ -8,19 +8,16 @@
     </section>
     <section id="profil">
         <div class="container">
-            <h2>Profile</h2>
+            <h2>Kategori</h2>
             <div class="row">
                 <div class="col-lg-6">
                     <img style="width: 100%" src="{{ asset('frontend/assets/img/profile.jpg') }}" alt="">
                 </div>
                 <div style="padding: 10px" class="col-lg-6 text-ket">
-                   
-
-    @foreach($content as $kategori)
-
-{!!$kategori->nama!!}
- <br><br>
-    @endforeach
+                    @foreach ($content as $kategori)
+                        {!! $kategori->nama !!}
+                        <br><br>
+                    @endforeach
 
                 </div>
             </div>
@@ -33,29 +30,28 @@
         .footer {
             background-color: #f0f0f0;
         }
-
     </style>
 @endpush
 @push('addons-script')
-<script>
-    let tl3 = gsap.timeline();
-    tl3.from('#header', {
-        opacity: 0,
-        duration: 0.6,
-        y:-50,
-        ease: "Power1.ease"
-    })
-    .from('#profil', {
-        opacity: 0,
-        duration: 1,
-        y: -50,
-        ease: "Power1.ease"
-    }, "-=0.2")
-    .from('.footer .row', {
-        opacity: 0,
-        duration: 1,
-        y: -50,
-        ease: "Power1.ease"
-    }, "-=0.5")
-</script>
+    <script>
+        let tl3 = gsap.timeline();
+        tl3.from('#header', {
+                opacity: 0,
+                duration: 0.6,
+                y: -50,
+                ease: "Power1.ease"
+            })
+            .from('#profil', {
+                opacity: 0,
+                duration: 1,
+                y: -50,
+                ease: "Power1.ease"
+            }, "-=0.2")
+            .from('.footer .row', {
+                opacity: 0,
+                duration: 1,
+                y: -50,
+                ease: "Power1.ease"
+            }, "-=0.5")
+    </script>
 @endpush

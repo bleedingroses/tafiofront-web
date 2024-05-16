@@ -4,139 +4,98 @@ namespace App\Http\Controllers;
 use App\Models\company;
 use View;
 
-class ContentController extends Controller
-{
+class ContentController extends Controller {
 
-public $defaultView,$company,$folder,$menu,$kirim,
-$customView;
-
+    public $defaultView, $company, $folder, $menu, $kirim,
+        $customView;
 
 ////////setup awal//////////////////////////////////////////////
 
-public function __construct() {
-    
+    public function __construct() {
 
+        $domain = request()->getHost();
+        $this->company = company::where('domain', $domain)->first();
 
+        $this->folder = 'company.' . $this->company->name . '.';
 
-$domain=request()->getHost();
-$this->company=company::where('domain',$domain)->first();
+        $this->kirim['folder'] = $this->folder;
+        $this->kirim['company'] = $this->company;
 
+        $hasil = [];
+        foreach ($this->company->config as $xx) {
+            $hasil[$xx->nama] = $xx->isi;
+        }
+        $this->kirim['config'] = (object) $hasil;
 
+    }
 
-$this->folder='company.'.$this->company->name.'.';
+    public function awal() {
 
-$this->kirim['folder']=$this->folder;
-$this->kirim['company']=$this->company;
+        $yyy = explode('/', request()->route()->uri);
 
+        $jumlahUrl = count($yyy);
+        $nama = $yyy[0];
 
+        $this->menu = $this->company->menu()->where('nama', $nama)->first();
 
+        $page = $this->menu->jenis;
+        $customPage = $nama;
 
-$hasil=[];
-foreach($this->company->config as $xx)
-{
-$hasil[$xx->nama]=$xx->isi;
-}
-$this->kirim['config']=(object)$hasil;
+        if ($page == 'content') {$page = 'list';
+            if ($jumlahUrl == 2) {$customPage .= "Detail";
+                $page .= "Detail";}} else if ($page == 'kategori') {
+            if ($jumlahUrl == 2) {$page .= "List";
+                $customPage .= "List";} else if ($jumlahUrl == 3) {
+                $page .= "ListDetail";
+                $customPage .= "ListDetail";
+            }
+        }
 
+        $this->defaultView = $this->folder . 'defaultPages.' . $page;
+        $this->customView = $this->folder . 'customPages.' . $customPage;
 
-
-
-
-}
-    
-
-public function awal() {
-    
-$yyy=explode('/',request()->route()->uri);
-
-$jumlahUrl=count($yyy);
-$nama=$yyy[0];
-
-$this->menu=$this->company->menu()->where('nama',$nama)->first();
-
-
-$page=$this->menu->jenis;
-$customPage=$nama;
-
-if($page=='content')
-{$page='list';
-if($jumlahUrl==2)
-{$customPage.="Detail";
-$page.="Detail";
-}
-}
-else if ($page=='kategori')
-{
-if($jumlahUrl==2)
-{$page.="List";
-$customPage.="List";
-
-}else if($jumlahUrl==3)
-{
-$page.="ListDetail";
-$customPage.="ListDetail";
-}
-}
-
-$this->defaultView= $this->folder.'defaultPages.'.$page;
-$this->customView= $this->folder.'customPages.'.$customPage;
-
-
-
-}
-
-
-
+    }
 
 /////////////////////////////proses route/////////////////////
 
-
-    public function index()
-    {
-return view($this->folder.'defaultPages.home',$this->kirim);
+    public function index() {
+        return view($this->folder . 'defaultPages.home', $this->kirim);
     }
-    
-    public function content()
-     {
-$this->awal();
 
-$this->kirim['content']=$this->menu->content;
-return $this->tampil();    
-     }   
-   
-     public function kategori()
-     {
-$this->awal();
-$this->kirim['content']=$this->menu->kategori;
-return $this->tampil();    
-     }   
-  
+    public function content() {
+        $this->awal();
 
-    
-    public function single($id=false)
-    {
-$this->awal();
+        $this->kirim['content'] = $this->menu->content;
+        return $this->tampil();
+    }
 
-if(!$id)
-$this->kirim['content']=$this->menu->content->first();
-else
-$this->kirim['content']=$this->menu->content()->find($id);
+    public function kategori() {
+        $this->awal();
+        $this->kirim['content'] = $this->menu->kategori;
+        return $this->tampil();
+    }
 
-return $this->tampil();
-}
+    public function single($id = false) {
+        $this->awal();
 
+        if (!$id) {
+            $this->kirim['content'] = $this->menu->content->first();
+        } else {
+            $this->kirim['content'] = $this->menu->content()->find($id);
+        }
 
-
-
+        return $this->tampil();
+    }
 
 ///////////////////// memproses view /////////////////////////
 
-private function tampil()
-{
-if (View::exists($this->customView)) 
-    return view($this->customView,$this->kirim);
-else 
-    return view($this->defaultView,$this->kirim);
-}
+    private function tampil() {
+        if (View::exists($this->customView)) {
+            return view($this->customView, $this->kirim);
+        } else {
+            return view($this->defaultView, $this->kirim);
+        }
+
+    }
 
 }

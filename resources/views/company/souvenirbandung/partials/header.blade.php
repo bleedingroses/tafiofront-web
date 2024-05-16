@@ -30,119 +30,45 @@
                                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#"
                                         data-bs-toggle="dropdown">{{ $item->nama }}</a>
                                     <ul class="dropdown-menu">
-                                        @foreach ($item->content()->get() as $value)
-                                            <li class="nav-item"><a class="dropdown-item" target="_blank" href="{{ $value->isi }}">{{ $value->judul }}</a></li>
+                                        @foreach ($item->content as $value)
+                                            <li class="nav-item"><a class="dropdown-item" target="_blank"
+                                                    href="{{ $value->isi }}">{{ $value->judul }}</a></li>
                                         @endforeach
                                     </ul>
                                 </li>
                             @endif
-                        @endforeach
-                        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#"
-                                data-bs-toggle="dropdown">Dropdown</a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="dropdown-item" href="#">Action</a></li>
-                                <li class="dropdown dropdown-submenu dropend"><a class="dropdown-item dropdown-toggle"
-                                        href="#" data-bs-toggle="dropdown">Dropdown</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown dropdown-submenu dropend"><a
-                                                class="dropdown-item dropdown-toggle" href="#"
-                                                data-bs-toggle="dropdown">Dropdown</a>
-                                            <ul class="dropdown-menu">
-                                                <li class="nav-item"><a class="dropdown-item" href="#">Action</a>
-                                                </li>
-                                                <li class="nav-item"><a class="dropdown-item" href="#">Another
-                                                        Action</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="nav-item"><a class="dropdown-item" href="#">Action</a></li>
-                                        <li class="nav-item"><a class="dropdown-item" href="#">Another Action</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item"><a class="dropdown-item" href="#">Another Action</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown dropdown-mega"><a class="nav-link dropdown-toggle" href="#"
-                                data-bs-toggle="dropdown">Mega Menu</a>
-                            <ul class="dropdown-menu mega-menu">
-                                <li class="mega-menu-content">
-                                    <div class="row gx-0 gx-lg-3">
-                                        <div class="col-lg-6">
-                                            <h6 class="dropdown-header">One</h6>
-                                            <div class="row gx-0">
-                                                <div class="col-lg-6">
-                                                    <ul class="list-unstyled">
-                                                        <li><a class="dropdown-item" href="#">Link</a></li>
-                                                        <li><a class="dropdown-item" href="#">Link</a></li>
-                                                        <li><a class="dropdown-item" href="#">Link</a></li>
-                                                    </ul>
-                                                </div>
-                                                <!--/column -->
-                                                <div class="col-lg-6">
-                                                    <ul class="list-unstyled">
-                                                        <li><a class="dropdown-item" href="#">Link</a></li>
-                                                        <li><a class="dropdown-item" href="#">Link</a></li>
-                                                        <li><a class="dropdown-item" href="#">Link</a></li>
-                                                    </ul>
-                                                </div>
-                                                <!--/column -->
+                            @if ($item->jenis == 'kategori')
+                                <li class="nav-item dropdown dropdown-mega"><a class="nav-link dropdown-toggle"
+                                        href="#" data-bs-toggle="dropdown">{{ $item->nama }}</a>
+                                    <ul class="dropdown-menu mega-menu">
+                                        <li class="mega-menu-content">
+                                            <div class="row gx-0 gx-lg-3">
+                                                @foreach ($item->kategori()->take(4)->get() as $value)
+                                                    <div class="col-lg-3">
+                                                        <h6 class="dropdown-header">{{ $value->nama }}</h6>
+                                                        <div class="row gx-0">
+                                                            <div class="col-lg-12">
+                                                                <ul class="list-unstyled">
+                                                                    @foreach ($item->content()->where('kategori_id', $value->id)->take(5)->get() as $content)
+                                                                        <li><a class="dropdown-item" href="{{ url($content->judul) }}">{{ $content->judul }}</a></li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            </div>
+                                                            <!--/column -->
+                                                        </div>
+                                                        <!--/.row -->
+                                                    </div>
+                                                    <!--/column -->
+                                                @endforeach
                                             </div>
                                             <!--/.row -->
-                                        </div>
-                                        <!--/column -->
-                                        <div class="col-lg-3">
-                                            <h6 class="dropdown-header">Two</h6>
-                                            <ul class="list-unstyled">
-                                                <li><a class="dropdown-item" href="#">Link</a></li>
-                                                <li><a class="dropdown-item" href="#">Link</a></li>
-                                                <li><a class="dropdown-item" href="#">Link</a></li>
-                                            </ul>
-                                        </div>
-                                        <!--/column -->
-                                        <div class="col-lg-3">
-                                            <h6 class="dropdown-header">Three</h6>
-                                            <ul class="list-unstyled">
-                                                <li><a class="dropdown-item" href="#">Link</a></li>
-                                                <li><a class="dropdown-item" href="#">Link</a></li>
-                                                <li><a class="dropdown-item" href="#">Link</a></li>
-                                            </ul>
-                                        </div>
-                                        <!--/column -->
-                                    </div>
-                                    <!--/.row -->
+                                        </li>
+                                        <!--/.mega-menu-content-->
+                                    </ul>
+                                    <!--/.dropdown-menu -->
                                 </li>
-                                <!--/.mega-menu-content-->
-                            </ul>
-                            <!--/.dropdown-menu -->
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Dropdown
-                                Large</a>
-                            <div class="dropdown-menu dropdown-lg">
-                                <div class="dropdown-lg-content">
-                                    <div>
-                                        <h6 class="dropdown-header">One</h6>
-                                        <ul class="list-unstyled">
-                                            <li><a class="dropdown-item" href="#">Link</a></li>
-                                            <li><a class="dropdown-item" href="#">Link</a></li>
-                                            <li><a class="dropdown-item" href="#">Another Link</a></li>
-                                        </ul>
-                                    </div>
-                                    <!-- /.column -->
-                                    <div>
-                                        <h6 class="dropdown-header">Two</h6>
-                                        <ul class="list-unstyled">
-                                            <li><a class="dropdown-item" href="#">Link</a></li>
-                                            <li><a class="dropdown-item" href="#">Link</a></li>
-                                            <li><a class="dropdown-item" href="#">Another Link</a></li>
-                                        </ul>
-                                    </div>
-                                    <!-- /.column -->
-                                </div>
-                                <!-- /auto-column -->
-                            </div>
-                        </li>
+                            @endif
+                        @endforeach
                     </ul>
                     <!-- /.navbar-nav -->
                     <div class="d-lg-none mt-auto pt-6 pb-6 order-4">
@@ -166,13 +92,11 @@
                 <ul class="navbar-nav flex-row align-items-center ms-auto">
                     <li class="nav-item d-none d-lg-block">
                         <a href="https://web.whatsapp.com/send?phone={{ !empty($config) ? $config['wa'] : '' }}&amp;text={{ $text }}"
-                            target="_blank" class="btn btn-circle btn-sm btn-green"><i
-                                class="uil uil-whatsapp"></i></a>
+                            target="_blank" class="btn btn-circle btn-sm btn-green"><i class="uil uil-whatsapp"></i></a>
                     </li>
                     <li class="nav-item d-lg-none">
                         <a href="https://api.whatsapp.com/send?phone={{ !empty($config) ? $config['wa'] : '' }}&amp;text={{ $text }}"
-                            target="_blank" class="btn btn-circle btn-sm btn-green"><i
-                                class="uil uil-whatsapp"></i></a>
+                            target="_blank" class="btn btn-circle btn-sm btn-green"><i class="uil uil-whatsapp"></i></a>
                     </li>
                     <li class="nav-item d-lg-none">
                         <button class="hamburger offcanvas-nav-btn"><span></span></button>

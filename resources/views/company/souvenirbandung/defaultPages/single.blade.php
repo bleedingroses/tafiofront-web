@@ -1,4 +1,4 @@
-@extends($folder.'layouts.main')
+@extends($folder . 'layouts.main')
 
 @section('main')
     <section id="header">
@@ -14,10 +14,9 @@
                     <img style="width: 100%" src="{{ asset('frontend/assets/img/profile.jpg') }}" alt="">
                 </div>
                 <div style="padding: 10px" class="col-lg-6 text-ket">
-                   
-{!!$content->isi??''!!}
-{!!$config->wa??''!!}
 
+                    {!! $content->isi ?? '' !!}
+                    {!! $config->wa ?? '' !!}
 
                 </div>
             </div>
@@ -30,29 +29,28 @@
         .footer {
             background-color: #f0f0f0;
         }
-
     </style>
 @endpush
 @push('addons-script')
-<script>
-    let tl3 = gsap.timeline();
-    tl3.from('#header', {
-        opacity: 0,
-        duration: 0.6,
-        y:-50,
-        ease: "Power1.ease"
-    })
-    .from('#profil', {
-        opacity: 0,
-        duration: 1,
-        y: -50,
-        ease: "Power1.ease"
-    }, "-=0.2")
-    .from('.footer .row', {
-        opacity: 0,
-        duration: 1,
-        y: -50,
-        ease: "Power1.ease"
-    }, "-=0.5")
-</script>
+    <script>
+        let tl3 = gsap.timeline();
+        tl3.from('#header', {
+                opacity: 0,
+                duration: 0.6,
+                y: -50,
+                ease: "Power1.ease"
+            })
+            .from('#profil', {
+                opacity: 0,
+                duration: 1,
+                y: -50,
+                ease: "Power1.ease"
+            }, "-=0.2")
+            .from('.footer .row', {
+                opacity: 0,
+                duration: 1,
+                y: -50,
+                ease: "Power1.ease"
+            }, "-=0.5")
+    </script>
 @endpush
