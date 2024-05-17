@@ -84,16 +84,15 @@ class ContentController extends Controller {
     public function single($id = false, $kategori = false) {
         $this->awal();
 
-        if ($id) {
+        if (is_numeric($id)) {
             $this->kirim['content'] = $this->menu->content()->find($id);
-        }
-        if (!$kategori) {
-            $this->kirim['content'] = $this->menu->content()->find($kategori);
-        }
-
-        if (!$id || !$kategori) {
+        } else {
             $this->kirim['content'] = $this->menu->content()->first();
             $this->kirim['menu'] = $this->menu;
+        }
+
+        if (is_numeric($kategori)) {
+            $this->kirim['content'] = $this->menu->content()->find($kategori);
         }
 
         return $this->tampil();
