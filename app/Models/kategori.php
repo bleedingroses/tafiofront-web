@@ -13,8 +13,10 @@ protected $table='web_kategoris';
 
 
 
+    public function content() {
+        return $this->hasMany(content::class);
 
-
+    }
 }
 
 

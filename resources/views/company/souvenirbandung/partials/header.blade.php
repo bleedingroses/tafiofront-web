@@ -20,37 +20,36 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
                         aria-label="Close"></button>
                 </div>
+
                 <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
                     <ul class="navbar-nav">
-                        @foreach ($company->menu()->get() as $menu)
-                            @if ($menu->jenis == 'single')
-                                <li class="nav-item"><a class="nav-link" href="http://{{ request()->getHost().'/'.str_replace(' ', '-', $menu->nama) }}">{{ $menu->nama }}</a></li>
-                            @endif
-                            @if ($menu->jenis == 'content')
+                                <li class="nav-item"><a class="nav-link" href="{!! url('kontak') !!}">kontak</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{!! url('about us') !!}">about us</a></li>
+                      
                                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#"
-                                        data-bs-toggle="dropdown">{{ $menu->nama }}</a>
+                                        data-bs-toggle="dropdown">marketplace</a>
                                     <ul class="dropdown-menu">
-                                        @foreach ($menu->content as $content)
+                                        @foreach ($company->ambilMenu('marketplace')->content as $content)
                                             <li class="nav-item"><a class="dropdown-item" target="_blank"
-                                                    href="http://{{ request()->getHost().'/'.$content->isi }}">{{ $content->judul }}</a></li>
+                                                    href="{!! url($content->isi) !!}">{{ $content->judul }}</a></li>
                                         @endforeach
                                     </ul>
                                 </li>
-                            @endif
-                            @if ($menu->jenis == 'kategori')
+                      
+                        
                                 <li class="nav-item dropdown dropdown-mega"><a class="nav-link dropdown-toggle"
-                                        href="#" data-bs-toggle="dropdown">{{ $menu->nama }}</a>
+                                        href="#" data-bs-toggle="dropdown">produk</a>
                                     <ul class="dropdown-menu mega-menu">
                                         <li class="mega-menu-content">
                                             <div class="row gx-0 gx-lg-3">
-                                                @foreach ($menu->kategori()->take(4)->get() as $kategori)
+                                                @foreach ($company->ambilMenu('produk')->kategori()->take(4)->get() as $kategori)
                                                     <div class="col-lg-3">
                                                         <h6 class="dropdown-header">{{ $kategori->nama }}</h6>
                                                         <div class="row gx-0">
                                                             <div class="col-lg-12">
                                                                 <ul class="list-unstyled">
-                                                                    @foreach ($menu->content()->where('kategori_id', $kategori->id)->take(5)->get() as $content)
-                                                                        <li><a class="dropdown-item" href="{{ url($menu->nama.'/'.$kategori->nama.'/'.$content->id) }}">{{ $content->judul }}</a></li>
+                                                                    @foreach ($kategori->content as $content)
+                                                                        <li><a class="dropdown-item" href="{{ url('produk/'.$kategori->nama.'/'.$content->id) }}">{{ $content->judul }}</a></li>
                                                                     @endforeach
                                                                 </ul>
                                                             </div>
@@ -67,8 +66,8 @@
                                     </ul>
                                     <!--/.dropdown-menu -->
                                 </li>
-                            @endif
-                        @endforeach
+                      
+                      
                     </ul>
                     <!-- /.navbar-nav -->
                     <div class="d-lg-none mt-auto pt-6 pb-6 order-4">
