@@ -75,13 +75,19 @@ class ContentController extends Controller {
         return $this->tampil();
     }
 
-    public function single($id = false) {
+    public function single($id = false, $kategori = false) {
         $this->awal();
 
-        if (!$id) {
-            $this->kirim['content'] = $this->menu->content->first();
-        } else {
+        if ($id) {
             $this->kirim['content'] = $this->menu->content()->find($id);
+        }
+        if (!$kategori) {
+            $this->kirim['content'] = $this->menu->content()->find($kategori);
+        }
+
+        if (!$id || !$kategori) {
+            dd($this->menu->content->first());
+            $this->kirim['content'] = $this->menu;
         }
 
         return $this->tampil();

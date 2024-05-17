@@ -15,7 +15,7 @@
                 </div>
                 <div style="padding: 10px" class="col-lg-6 text-ket">
 
-                    {!! $content->isi ?? '' !!}
+                    {!! $content->ringkasan ?? '' !!}
 
                 </div>
             </div>

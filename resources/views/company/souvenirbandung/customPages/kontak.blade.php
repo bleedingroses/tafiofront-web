@@ -16,10 +16,15 @@
                 <div style="padding: 10px" class="col-lg-6 text-ket">
 
 
+                    @php
+                        dd($content);
+                    @endphp
+
+
                     ini custom profil
                     {!! $content->isi ?? '' !!}
 
-                    {{ $config->profil }}
+                    {{ $config->wa }}
 
                 </div>
             </div>

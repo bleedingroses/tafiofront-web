@@ -22,35 +22,35 @@
                 </div>
                 <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
                     <ul class="navbar-nav">
-                        @foreach ($company->menu()->get() as $item)
-                            @if ($item->jenis == 'single')
-                                <li class="nav-item"><a class="nav-link" href="#">{{ $item->nama }}</a></li>
+                        @foreach ($company->menu()->get() as $menu)
+                            @if ($menu->jenis == 'single')
+                                <li class="nav-item"><a class="nav-link" href="{{ url($menu->nama) }}">{{ $menu->nama }}</a></li>
                             @endif
-                            @if ($item->jenis == 'content')
+                            @if ($menu->jenis == 'content')
                                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#"
-                                        data-bs-toggle="dropdown">{{ $item->nama }}</a>
+                                        data-bs-toggle="dropdown">{{ $menu->nama }}</a>
                                     <ul class="dropdown-menu">
-                                        @foreach ($item->content as $value)
+                                        @foreach ($menu->content as $content)
                                             <li class="nav-item"><a class="dropdown-item" target="_blank"
-                                                    href="{{ $value->isi }}">{{ $value->judul }}</a></li>
+                                                    href="{{ $content->isi }}">{{ $content->judul }}</a></li>
                                         @endforeach
                                     </ul>
                                 </li>
                             @endif
-                            @if ($item->jenis == 'kategori')
+                            @if ($menu->jenis == 'kategori')
                                 <li class="nav-item dropdown dropdown-mega"><a class="nav-link dropdown-toggle"
-                                        href="#" data-bs-toggle="dropdown">{{ $item->nama }}</a>
+                                        href="#" data-bs-toggle="dropdown">{{ $menu->nama }}</a>
                                     <ul class="dropdown-menu mega-menu">
                                         <li class="mega-menu-content">
                                             <div class="row gx-0 gx-lg-3">
-                                                @foreach ($item->kategori()->take(4)->get() as $value)
+                                                @foreach ($menu->kategori()->take(4)->get() as $kategori)
                                                     <div class="col-lg-3">
-                                                        <h6 class="dropdown-header">{{ $value->nama }}</h6>
+                                                        <h6 class="dropdown-header">{{ $kategori->nama }}</h6>
                                                         <div class="row gx-0">
                                                             <div class="col-lg-12">
                                                                 <ul class="list-unstyled">
-                                                                    @foreach ($item->content()->where('kategori_id', $value->id)->take(5)->get() as $content)
-                                                                        <li><a class="dropdown-item" href="{{ url($content->judul) }}">{{ $content->judul }}</a></li>
+                                                                    @foreach ($menu->content()->where('kategori_id', $kategori->id)->take(5)->get() as $content)
+                                                                        <li><a class="dropdown-item" href="{{ url($menu->nama.'/'.$kategori->nama.'/'.$content->id) }}">{{ $content->judul }}</a></li>
                                                                     @endforeach
                                                                 </ul>
                                                             </div>

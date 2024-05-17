@@ -14,9 +14,6 @@
                     <img style="width: 100%" src="{{ asset('frontend/assets/img/profile.jpg') }}" alt="">
                 </div>
                 <div style="padding: 10px" class="col-lg-6 text-ket">
-                    @php
-                        dd($content);
-                    @endphp
 
                     {!! $content->isi ?? '' !!}
 
