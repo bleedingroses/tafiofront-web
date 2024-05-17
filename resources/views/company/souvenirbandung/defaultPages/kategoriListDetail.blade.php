@@ -16,6 +16,7 @@
                 <div style="padding: 10px" class="col-lg-6 text-ket">
 
                     {!! $content->ringkasan ?? '' !!}
+                    {!! gambar($content->gambar_kecil) !!}
 
                 </div>
             </div>
