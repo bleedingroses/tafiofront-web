@@ -24,7 +24,7 @@
                     <ul class="navbar-nav">
                         @foreach ($company->menu()->get() as $menu)
                             @if ($menu->jenis == 'single')
-                                <li class="nav-item"><a class="nav-link" href="{{ url($menu->nama) }}">{{ $menu->nama }}</a></li>
+                                <li class="nav-item"><a class="nav-link" href="http://{{ request()->getHost().'/'.str_replace(' ', '-', $menu->nama) }}">{{ $menu->nama }}</a></li>
                             @endif
                             @if ($menu->jenis == 'content')
                                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#"
@@ -32,7 +32,7 @@
                                     <ul class="dropdown-menu">
                                         @foreach ($menu->content as $content)
                                             <li class="nav-item"><a class="dropdown-item" target="_blank"
-                                                    href="{{ $content->isi }}">{{ $content->judul }}</a></li>
+                                                    href="http://{{ request()->getHost().'/'.$content->isi }}">{{ $content->judul }}</a></li>
                                         @endforeach
                                     </ul>
                                 </li>

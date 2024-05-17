@@ -36,7 +36,13 @@ class ContentController extends Controller {
         $jumlahUrl = count($yyy);
         $nama = $yyy[0];
 
-        $this->menu = $this->company->menu()->where('nama', $nama)->first();
+        if (strpos($nama, '-') !== false) {
+            $replaced = str_replace('-', ' ', $nama);
+        } else {
+            $replaced = $nama;
+        }
+
+        $this->menu = $this->company->menu()->where('nama', $replaced)->first();
 
         $page = $this->menu->jenis;
         $customPage = $nama;
@@ -86,8 +92,8 @@ class ContentController extends Controller {
         }
 
         if (!$id || !$kategori) {
-            dd($this->menu->content->first());
-            $this->kirim['content'] = $this->menu;
+            $this->kirim['content'] = $this->menu->content()->first();
+            $this->kirim['menu'] = $this->menu;
         }
 
         return $this->tampil();

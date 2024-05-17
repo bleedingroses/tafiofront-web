@@ -3,12 +3,11 @@
 @section('main')
     <section id="header">
         <div class="container">
-            <h1>Sahabat <span style="color: #72c02c">Cetakmu</span></h1>
+            <h1>{!! $menu->nama ?? '' !!} <span style="color: #72c02c">{!! $content->ringkasan ?? '' !!}</span></h1>
         </div>
     </section>
     <section id="profil">
         <div class="container">
-            <h2>Profile</h2>
             <div class="row">
                 <div class="col-lg-6">
                     <img style="width: 100%" src="{{ asset('frontend/assets/img/profile.jpg') }}" alt="">
