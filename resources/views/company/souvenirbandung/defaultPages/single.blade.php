@@ -16,6 +16,7 @@
 
                     {!! $content->isi ?? '' !!}
                     {!! $config->wa ?? '' !!}
+                    {!! gambar($content->gambar_kecil) !!}
 
                 </div>
             </div>

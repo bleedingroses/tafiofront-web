@@ -36,13 +36,7 @@ class ContentController extends Controller {
         $jumlahUrl = count($yyy);
         $nama = $yyy[0];
 
-        if (strpos($nama, '-') !== false) {
-            $replaced = str_replace('-', ' ', $nama);
-        } else {
-            $replaced = $nama;
-        }
-
-        $this->menu = $this->company->menu()->where('nama', $replaced)->first();
+        $this->menu = $this->company->menu()->where('nama', $nama)->first();
 
         $page = $this->menu->jenis;
         $customPage = $nama;
