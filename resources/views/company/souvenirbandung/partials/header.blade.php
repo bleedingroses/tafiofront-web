@@ -3,7 +3,7 @@
         <div class="container flex-lg-row flex-nowrap align-items-center">
             <div class="navbar-brand w-100">
                 <a href="#">
-                    <div class="navbar-brand h-100">
+                    <div class="navbar-brand w-100">
                         <a href="#">
                             {!! gambarConfig($config['logo']) !!}
                         </a>
@@ -12,30 +12,16 @@
             </div>
             <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
                 <div class="offcanvas-header d-lg-none">
-                    <a href="#"><img src="{{ asset($company->name . '/img/logo-light.png') }}"
-                            srcset="{{ asset($company->name . '/img/logo-light@2x.png') }} 2x" alt="" /></a>
+                    <a href="#">{!! gambarConfig($config['logo']) !!}</a>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
                         aria-label="Close"></button>
                 </div>
 
                 <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="{!! url('kontak') !!}">kontak</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{!! url('about-us') !!}">about us</a></li>
-
-                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#"
-                                data-bs-toggle="dropdown">marketplace</a>
-                            <ul class="dropdown-menu">
-                                @foreach ($company->ambilMenu('marketplace')->content as $content)
-                                    <li class="nav-item"><a class="dropdown-item" target="_blank"
-                                            href="{!! url($content->isi) !!}">{{ $content->judul }}</a></li>
-                                @endforeach
-                            </ul>
-                        </li>
-
 
                         <li class="nav-item dropdown dropdown-mega"><a class="nav-link dropdown-toggle" href="#"
-                                data-bs-toggle="dropdown">produk</a>
+                                data-bs-toggle="dropdown">Produk</a>
                             <ul class="dropdown-menu mega-menu">
                                 <li class="mega-menu-content">
                                     <div class="row gx-0 gx-lg-3">
@@ -65,6 +51,19 @@
                             </ul>
                             <!--/.dropdown-menu -->
                         </li>
+
+                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#"
+                            data-bs-toggle="dropdown">Marketplace</a>
+                        <ul class="dropdown-menu">
+                            @foreach ($company->ambilMenu('marketplace')->content as $content)
+                                <li class="nav-item"><a class="dropdown-item" target="_blank"
+                                        href="{!! url($content->isi) !!}">{{ $content->judul }}</a></li>
+                            @endforeach
+                        </ul>
+
+                        <li class="nav-item"><a class="nav-link" href="{!! url('kontak') !!}">Kontak</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{!! url('about-us') !!}">About Us</a></li>
+                    </li>
 
                     </ul>
                     <!-- /.navbar-nav -->
