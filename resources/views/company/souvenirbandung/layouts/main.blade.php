@@ -9,7 +9,8 @@
     <meta name="keywords"
         content="bootstrap 5, business, corporate, creative, gulp, marketing, minimal, modern, multipurpose, one page, responsive, saas, sass, seo, startup, html5 template, site template">
     <meta name="author" content="elemis">
-    <title>{{ $company->name }} - Modern & Multipurpose Bootstrap 5 Template</title>
+    <title>{{ $company->name }} - Cetak Brosur, Poster, Buku Online Murah</title>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset($company->name . '/img/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset($company->name . '/css/plugins.css') }}">
     <link rel="stylesheet" href="{{ asset($company->name . '/css/style.css') }}">
@@ -39,6 +40,8 @@
     </div>
     <script src="{{ asset($company->name . '/js/plugins.js') }}"></script>
     <script src="{{ asset($company->name . '/js/theme.js') }}"></script>
+    <script src="{{ asset($company->name . '/js/jquery-latest.min.js') }}"></script>
+    @stack('addons-script')
 </body>
 
 </html>
