@@ -55,7 +55,7 @@
                     <div class="swiper-wrapper">
                         @foreach ($company->ambilMenu('promo')->content as $content)
                         <div class="swiper-slide rounded">
-                            {!! gambar($content->gambar_besar) !!}
+                            <a href="{{ url('promo/'.$content->id) }}">{!! gambar($content->gambar_besar) !!}</a>
                         </div>
                         @endforeach
                         <!--/.swiper-slide -->

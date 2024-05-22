@@ -1,25 +1,12 @@
 @extends($folder . 'layouts.main')
 
 @section('main')
-    <section id="header">
-        <div class="container">
-            <h1>Sahabat <span style="color: #72c02c">Cetakmu</span></h1>
+    <section class="wrapper bg-soft-primary">
+        <div class="text-center">
+            <img src="{{ asset($company->name . '/img/bg16.png') }}" alt="">
+            <!-- /.row -->
         </div>
-    </section>
-    <section id="profil">
-        <div class="container">
-            <h2>List Detail</h2>
-            <div class="row">
-                <div class="col-lg-6">
-                    <img style="width: 100%" src="{{ asset('frontend/assets/img/profile.jpg') }}" alt="">
-                </div>
-                <div style="padding: 10px" class="col-lg-6 text-ket">
-
-                    {!! $content->isi ?? '' !!}
-
-                </div>
-            </div>
-        </div>
+        <!-- /.container -->
     </section>
 @endsection
 
