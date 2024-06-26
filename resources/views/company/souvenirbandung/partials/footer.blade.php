@@ -21,7 +21,7 @@
                 <div class="widget">
                     <h4 class="widget-title text-white mb-3">Learn More</h4>
                     <ul class="list-unstyled  mb-0">
-                        <li><a href="{!! url('kontak') !!}">Kontak</a></li>
+                        <li><a href="{!! url('Kontak') !!}">Kontak</a></li>
                         <li><a href="{!! url('about-us') !!}">About Us</a></li>
                     </ul>
                 </div>

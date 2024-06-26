@@ -5,6 +5,8 @@
                 <a href="{{ url('/') }}">
                     {!! gambarConfig($config['logo']) !!}
                 </a>
+
+                
             </div>
             <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
                 <div class="offcanvas-header d-lg-none">
@@ -49,7 +51,7 @@
                             </ul>
                             <!--/.dropdown-menu -->
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="{!! url('kontak') !!}">Kontak</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{!! url('Kontak') !!}">kontak</a></li>
                         <li class="nav-item"><a class="nav-link" href="{!! url('about-us') !!}">About Us</a></li>
                     </ul>
                     <!-- /.navbar-nav -->

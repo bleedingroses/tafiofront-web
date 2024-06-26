@@ -3,10 +3,17 @@
 @section('main')
     <section class="wrapper bg-soft-primary">
         <div class="text-center">
-            <img src="{{ asset($company->name . '/img/bg16.png') }}" alt="">
+
+            <img class="img-profil" src="{{ asset($company->name . '/img/profil.jpg') }}" alt="">
+            <h2>percobaan halaman detail promosi</h2>
             <!-- /.row -->
+
+            
+          
         </div>
         <!-- /.container -->
+
+      
     </section>
 @endsection
 
@@ -14,6 +21,10 @@
     <style>
         .footer {
             background-color: #f0f0f0;
+        }
+        .img-profil{
+            height: 75%;
+            width: 100%;
         }
     </style>
 @endpush

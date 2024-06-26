@@ -11,7 +11,10 @@
             <h2>Kategori List</h2>
             <div class="row">
                 <div class="col-lg-6">
-                    <img style="width: 100%" src="{{ asset('frontend/assets/img/profile.jpg') }}" alt="">
+                    {{-- <img style="width: 100%" src="{{ asset('frontend/assets/img/profile.jpg') }}" alt=""> --}}
+
+
+                    <img class="img-profil" src="{{ asset($company->name . '/img/profil.jpg') }}" alt="">
                 </div>
                 <div style="padding: 10px" class="col-lg-6 text-ket">
 

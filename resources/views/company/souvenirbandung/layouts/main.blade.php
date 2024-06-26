@@ -14,6 +14,11 @@
     <link rel="shortcut icon" href="{{ asset($company->name . '/img/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset($company->name . '/css/plugins.css') }}">
     <link rel="stylesheet" href="{{ asset($company->name . '/css/style.css') }}">
+
+
+    <link rel="stylesheet" href="{{ asset($company->name . '/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset($company->name . '/css/cubeportfolio.css') }}">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     @stack('addons-style')
 </head>
 
@@ -41,7 +46,46 @@
     <script src="{{ asset($company->name . '/js/plugins.js') }}"></script>
     <script src="{{ asset($company->name . '/js/theme.js') }}"></script>
     <script src="{{ asset($company->name . '/js/jquery-latest.min.js') }}"></script>
+    <script src="{{ asset($company->name . '/js/jquery.cubeportfolio.min.js') }}"></script>
     @stack('addons-script')
 </body>
+
+
+
+<script>
+
+    (function($, window, document, undefined) {
+        'use strict';
+    
+        // init cubeportfolio
+        $('#js-grid-agency').cubeportfolio({
+            filters: '#js-filters-agency',
+            loadMore: '#js-loadMore-agency',
+            loadMoreAction: 'click',
+            layoutMode: 'grid',
+            defaultFilter: '*',
+            animationType: 'slideLeft',
+            gapHorizontal: 35,
+            gapVertical: 15,
+            gridAdjustment: 'responsive',
+            mediaQueries: [{
+                width: 1500,
+                cols: 5,
+            }, {
+                width: 1100,
+                cols: 4,
+            }, {
+                width: 800,
+                cols: 3,
+            }, {
+                width: 480,
+                cols: 2,
+            }],
+            caption: 'zoom',
+            displayType: 'fadeIn',
+            displayTypeSpeed: 100,
+        });
+    })(jQuery, window, document);
+    </script>
 
 </html>
