@@ -6,7 +6,14 @@
             data-autoplaytime="7000" data-nav="true" data-dots="false" data-items="1" data-thumbs="true">
             <div class="swiper">
                 <div class="swiper-wrapper">
-                    @foreach ($company->ambilMenu('slider')->content as $content)
+<?php 
+
+
+
+?>
+
+
+                    @foreach ($company->ambilContent('slider') as $content)
                         <div class="swiper-slide bg-image"
                             data-image-src="{{ 'http://' . env('BACKEND') . '/storage/content/' . substr($content->gambar_besar, 0, 2) . '/' . substr($content->gambar_besar, 2, 2) . '/' . $content->gambar_besar }}">
                         </div>
@@ -17,7 +24,7 @@
             <!-- /.swiper -->
             <div class="swiper swiper-thumbs">
                 <div class="swiper-wrapper">
-                    @foreach ($company->ambilMenu('slider')->content as $content)
+                    @foreach ($company->ambilContent('slider') as $content)
                         <div class="swiper-slide">{!! gambar($content->gambar_kecil) !!}</div>
                     @endforeach
                 </div>
@@ -55,7 +62,7 @@
             <div class="swiper-container dots-over" data-margin="5" data-dots="true" data-nav="true" data-autoheight="true">
                 <div class="swiper">
                     <div class="swiper-wrapper">
-                        @foreach ($company->ambilMenu('promo')->content as $content)
+                        @foreach ($company->ambilContent('promo') as $content)
                             <div class="swiper-slide rounded">
                                 <a href="{{ url('promo/' . $content->id) }}">{!! gambar($content->gambar_kecil) !!}</a>
 
@@ -89,7 +96,7 @@
             </div> |
            
            
-            @foreach ($company->ambilMenu('produk')->kategori()->take(4)->get() as $kategori)
+            @foreach ($company->ambilKategori('produk') as $kategori)
 
                 <div data-filter=".{{ str_replace(' ', '-', $kategori->nama) }}" class="cbp-filter-item">
                     {{ $kategori->nama }} <div class="cbp-filter-counter"></div>
@@ -98,7 +105,7 @@
         </div>
 
         <div id="js-grid-agency" class="cbp cbp-l-grid-agency">
-            @foreach ($company->ambilMenu('produk')->content as $content)
+            @foreach ($company->ambilContent('produk') as $content)
                 <div class="cbp-item {{ str_replace(' ', '-',$content->judul) }}">
                    
                     <a href="#">
@@ -131,7 +138,7 @@
                    
                
                     <div align="center">
-                         @foreach ($company->ambilMenu('produk')->kategori()->take(4)->get() as $kategori)
+                         @foreach ($company->ambilKategori('produk') as $kategori)
                         <button class="btn btn-default filter-button" data-filter="all">{!! $kategori->nama !!}</button>
                         @endforeach
                     </div>
@@ -139,7 +146,7 @@
                 <br />
 
 
-                @foreach ($company->ambilMenu('produk')->content as $content)
+                @foreach ($company->ambilContent('produk') as $content)
                     <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe" width="50px" >
                         <div class="img-responsive">{!! gambar($content->gambar_kecil) !!}</div>                      
                         <p style="color:rgb(245, 14, 49);">  {!! $content->judul !!} </p>

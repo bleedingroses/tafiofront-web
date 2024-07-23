@@ -19,7 +19,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Marketplace</a>
                             <ul class="dropdown-menu">
-                                @foreach ($company->ambilMenu('marketplace')->content as $content)
+                                @foreach ($company->ambilContent('marketplace') as $content)
                                     <li class="nav-item"><a class="dropdown-item" target="_blank"
                                             href="{!! url($content->isi) !!}">{{ $content->judul }}</a></li>
                                 @endforeach
@@ -30,13 +30,13 @@
                             <ul class="dropdown-menu mega-menu">
                                 <li class="mega-menu-content">
                                     <div class="row gx-0 gx-lg-3">
-                                        @foreach ($company->ambilMenu('produk')->kategori()->take(4)->get() as $kategori)
+                                        @foreach ($company->ambilKategori('produk') as $kategori)
                                             <div class="col-lg-3">
                                                 <h6 class="dropdown-header">{{ $kategori->nama }}</h6>
                                                 <ul class="list-unstyled">
                                                     @foreach ($kategori->content as $content)
                                                         <li><a class="dropdown-item"
-                                                                href="{{ url('produk/' . $kategori->nama . '/' . $content->id) }}">{{ $content->judul }}</a>
+                                                                href="{{ url('produk/' . $kategori->url . '/' . $content->url) }}">{{ $content->judul }}</a>
                                                         </li>
                                                     @endforeach
                                                 </ul>
@@ -51,7 +51,7 @@
                             </ul>
                             <!--/.dropdown-menu -->
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="{!! url('Kontak') !!}">kontak</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{!! url('kontak') !!}">kontak</a></li>
                         <li class="nav-item"><a class="nav-link" href="{!! url('about-us') !!}">About Us</a></li>
                     </ul>
                     <!-- /.navbar-nav -->

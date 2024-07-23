@@ -16,8 +16,13 @@
 
                 </div>
                 <div style="padding: 10px" class="col-lg-6 text-ket">
+                    
+
+                <?php 
+                
+                ?>
                     @foreach ($content as $hasil)
-                        {!! $hasil->isi !!}
+                        {!! $hasil->judul !!}
                         <br><br>
                     @endforeach
                 </div>

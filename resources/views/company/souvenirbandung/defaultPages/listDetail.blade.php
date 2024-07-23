@@ -5,7 +5,9 @@
         <div class="text-center">
 
             <img class="img-profil" src="{{ asset($company->name . '/img/profil.jpg') }}" alt="">
-            <h2>percobaan halaman detail promosi</h2>
+            <h2><?php 
+            echo $content->judul;
+            ?></h2>
             <!-- /.row -->
 
             

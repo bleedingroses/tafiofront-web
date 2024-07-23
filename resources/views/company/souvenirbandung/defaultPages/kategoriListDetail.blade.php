@@ -1,7 +1,12 @@
 @extends($folder . 'layouts.main')
 
+
 @section('main')
-    <section id="header">
+
+<?php 
+// dd($content);
+?>
+<section id="header">
         <div class="container">
             <h1><span style="color: #72c02c">{{ $content->ringkasan }}</span></h1>
         </div>

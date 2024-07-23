@@ -17,4 +17,7 @@ protected $table='web_contents';
         ;
     }
 
+public function menu(){ return $this->belongsTo((menu::class));}
+
+
 }

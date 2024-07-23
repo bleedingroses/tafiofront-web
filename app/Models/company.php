@@ -19,5 +19,22 @@ class company extends Model {
     public function ambilMenu($menu) {
         return $this->menu()->where('nama', $menu)->first();
     }
+    public function ambilContent($menu) {
+    $hasil=$this->menu()->where('nama', $menu)->first();
+    
+    if($hasil)
+    return $hasil->content;
+    else
+    return [];
+    }
+    public function ambilKategori($menu) {
+    $hasil=$this->menu()->where('nama', $menu)->first();
+    
+    if($hasil)
+    return $hasil->kategori()->get();
+    else
+    return [];
+    }
+
 
 }

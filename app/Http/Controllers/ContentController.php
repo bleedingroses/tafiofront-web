@@ -36,7 +36,11 @@ class ContentController extends Controller {
         $jumlahUrl = count($yyy);
         $nama = $yyy[0];
 
-        $this->menu = $this->company->menu()->where('nama', $nama)->first();
+
+        $this->menu = $this->company->menu()->where('url', $nama)->first();
+
+
+
 
         $page = $this->menu->jenis;
         $customPage = $nama;
@@ -65,6 +69,7 @@ class ContentController extends Controller {
     public function content() {
         $this->awal();
 
+
         $this->kirim['content'] = $this->menu->content;
         return $this->tampil();
     }
@@ -75,19 +80,29 @@ class ContentController extends Controller {
         return $this->tampil();
     }
 
-    public function single($id = false, $kategori = false) {
+   public function listDetail($content) {
+
+        $this->awal();
+$this->kirim['content'] = $this->menu->content()->where('url',$content)->first();
+        return $this->tampil();
+   }
+
+   public function single($kategori = null,$content=false) {
         $this->awal();
 
-        if (is_numeric($id)) {
-            $this->kirim['content'] = $this->menu->content()->find($id);
-        } else {
-            $this->kirim['content'] = $this->menu->content()->first();
-            $this->kirim['menu'] = $this->menu;
-        }
+// dd($content);
 
-        if (is_numeric($kategori)) {
+        if ($content) { 
+            $this->kirim['content'] = $this->menu->content()->where('url',$content)->first();
+        }
+        
+       else if ($kategori) {
             $this->kirim['content'] = $this->menu->content()->find($kategori);
         }
+        else {
+            $this->kirim['content'] = $this->menu->content()->first();
+        }
+
 
         return $this->tampil();
     }
@@ -95,6 +110,7 @@ class ContentController extends Controller {
 ///////////////////// memproses view /////////////////////////
 
     private function tampil() {
+
         if (View::exists($this->customView)) {
             return view($this->customView, $this->kirim);
         } else {

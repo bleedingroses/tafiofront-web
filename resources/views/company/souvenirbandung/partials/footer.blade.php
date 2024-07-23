@@ -32,7 +32,7 @@
                 <div class="widget">
                     <h4 class="widget-title text-white mb-3">Marketplace</h4>
                     <ul class="list-unstyled  mb-0">
-                        @foreach ($company->ambilMenu('marketplace')->content as $content)
+                        @foreach ($company->ambilContent('marketplace') as $content)
                             <li><a href="http://{{ $content->isi }}" target="_blank">{{ $content->judul }}</a></li>
                         @endforeach
                     </ul>

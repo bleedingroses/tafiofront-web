@@ -26,7 +26,7 @@
         $text = str_replace(' ', '%20', !empty($config) ? $config['text-wa'] : '');
     @endphp
     <div class="content-wrapper">
-        @include($folder . 'partials.header-single')
+        @include($folder . 'partials.header')
         @yield('main')
     </div>
     <!-- /.content-wrapper -->

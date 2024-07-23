@@ -17,8 +17,17 @@
                     <img class="img-profil" src="{{ asset($company->name . '/img/profil.jpg') }}" alt="">
                 </div>
                 <div style="padding: 10px" class="col-lg-6 text-ket">
+<?php 
+foreach($content as $isi)
+{
 
-                    {!! $content->isi ?? '' !!}
+echo $isi->judul."<br>";
+
+
+}
+
+
+?>
 
                 </div>
             </div>

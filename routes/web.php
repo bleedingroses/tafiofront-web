@@ -13,16 +13,16 @@ foreach ($companies as $company) {
             Route::get('/', [ContentController::class, 'index']);
 
             foreach ($company->menu as $menu) {
-                $replaced = str_replace(' ', '-', $menu->nama);
+                $url=$menu->url;
                 if ($menu->jenis == 'content') {
-                    Route::get($replaced, [ContentController::class, 'content']);
-                    Route::get($replaced . '/{id}', [ContentController::class, 'single']);
+                    Route::get($url, [ContentController::class, 'content']);
+                    Route::get($url . '/{content}', [ContentController::class, 'listDetail']);
                 } else if ($menu->jenis == 'kategori') {
-                    Route::get($replaced, [ContentController::class, 'kategori']);
-                    Route::get($replaced . '/{kategori}', [ContentController::class, 'content']);
-                    Route::get($replaced . '/{kategori}/{id}', [ContentController::class, 'single']);
+                    Route::get($url, [ContentController::class, 'kategori']);
+                    Route::get($url . '/{kategori}', [ContentController::class, 'content']);
+                    Route::get($url . '/{kategori}/{content}', [ContentController::class, 'single']);
                 } else {
-                    Route::get($replaced, [ContentController::class, 'single']);
+                    Route::get($url, [ContentController::class, 'single']);
                 }
 
             }
